@@ -1,0 +1,1 @@
+Python Django project for crypto currency news
