@@ -8,7 +8,7 @@ def home(request):
     news = json.loads(api_news_request.content)
 
     #crypto price data
-    api_price_request = requests.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,XRP&tsyms=USD,EUR')
+    api_price_request = requests.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP,BCH,EOS,LTCS,XLM,ADA,USDT,MIOTA,TRX&tsyms=USD')
     price = json.loads(api_price_request.content)
     
 
@@ -18,3 +18,6 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+def prices(request):
+    return render(request, 'prices.html', {})
