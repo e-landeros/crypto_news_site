@@ -2,13 +2,19 @@ from django.shortcuts import render
 import requests
 import json
 
-# Create your views here.
 def home(request):
-    api_request = requests.get('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')
-    api = json.loads(api_request.content)
+    #crypto news
+    api_news_request = requests.get('https://min-api.cryptocompare.com/data/v2/news/?lang=EN')
+    news = json.loads(api_news_request.content)
+
+    #crypto price data
+    api_price_request = requests.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,XRP&tsyms=USD,EUR')
+    price = json.loads(api_price_request.content)
+    
 
     context = {
-        'api':api
+        'news':news,
+        'price':price,
     }
 
     return render(request, 'home.html', context)

@@ -2,6 +2,31 @@
 
 
 {% block content %}
-<h1>Home html page</h1>
+
+<div class="jumbotron mt-4">
+    <h1 class="display-4">Welcome To Crypto News!</h1>
+        <p class="lead">Your Source for up to the minute Crypto Currency News.</p>
+        <hr class="my-4">
+        <p></p>
+</div>
+
+    <div class="container">
+        <div class="row">
+            {% for x in news.Data %}  
+            <div class="col-sm">
+                <div class="card mt-3" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ x.imageurl }}" alt="{{ x.source }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.title}}</h5>
+                            <p class="card-text">{{x.body}}</p>
+                            <a href="{{ x.url }}" class="btn btn-secondary">Read More...</a>
+                        </div>
+                </div>
+                <br>
+            </div>  
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock  %}
     
